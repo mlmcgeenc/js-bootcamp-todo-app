@@ -21,23 +21,28 @@ const todos = [
 	},
 ];
 
-const countTodos = function () {
-	let count = 0;
-	todos.forEach(function (todo) {
-		if (todo.completedStatus === false) {
-			count = count + 1
-		}
-	});
-	return count;
-};
+// My solution
+// const countTodos = function () {
+// 	let count = 0;
+// 	todos.forEach(function (todo) {
+// 		if (todo.completedStatus === false) {
+// 			count = count + 1
+// 		}
+// 	});
+// 	return count;
+// };
+// const count = countTodos();
 
-const count = countTodos();
+// Andrew's solution
+const incompleteTodos = todos.filter(function (todo) {
+	return !todo.completed;
+});
 
 // You have n todos left (<p> element)
 //  Add a <p> for each todo above
 
-const summary = document.createElement("p");
-summary.textContent = `You have ${count} todos left.`;
+const summary = document.createElement("h2");
+summary.textContent = `You have ${incompleteTodos.length} todos left.`;
 document.querySelector("body").appendChild(summary);
 
 const buildTodoList = function () {
