@@ -21,19 +21,23 @@ const todos = [
 	},
 ];
 
-const paragraphs = document.querySelectorAll("p");
+const countTodos = function () {
+	let count = 0;
+	todos.forEach(function (todo) {
+		if (todo.completedStatus === false) {
+			count = count + 1
+		}
+	});
+	return count;
+};
 
-paragraphs.forEach(function (paragraph) {
-	if (paragraph.textContent.match("the")) {
-		paragraph.remove();
-	}
-});
+const count = countTodos();
 
 // You have n todos left (<p> element)
 //  Add a <p> for each todo above
 
 const summary = document.createElement("p");
-summary.textContent = "You have 2 todos left.";
+summary.textContent = `You have ${count} todos left.`;
 document.querySelector("body").appendChild(summary);
 
 const buildTodoList = function () {
