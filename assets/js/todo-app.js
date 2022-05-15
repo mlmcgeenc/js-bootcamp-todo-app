@@ -1,3 +1,5 @@
+const addTodoEl = document.getElementById("add-todo-button");
+
 const todos = [
 	{
 		todoTitle: "JS Class",
@@ -21,25 +23,9 @@ const todos = [
 	},
 ];
 
-// My solution
-// const countTodos = function () {
-// 	let count = 0;
-// 	todos.forEach(function (todo) {
-// 		if (todo.completedStatus === false) {
-// 			count = count + 1
-// 		}
-// 	});
-// 	return count;
-// };
-// const count = countTodos();
-
-// Andrew's solution
 const incompleteTodos = todos.filter(function (todo) {
 	return !todo.completed;
 });
-
-// You have n todos left (<p> element)
-//  Add a <p> for each todo above
 
 const summary = document.createElement("h2");
 summary.textContent = `You have ${incompleteTodos.length} todos left.`;
@@ -52,5 +38,11 @@ const buildTodoList = function () {
 		document.querySelector("body").appendChild(newTodo);
 	});
 };
+
+const handleAddTodo = function (e) {
+	console.log("handleAddTodo", e);
+};
+
+addTodoEl.addEventListener("click", handleAddTodo);
 
 buildTodoList();
