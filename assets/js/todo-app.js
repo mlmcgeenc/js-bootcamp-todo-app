@@ -1,4 +1,6 @@
 const addTodoEl = document.getElementById("add-todo-button");
+const newTodoEl = document.getElementById("new-todo");
+const inputDisplayEl = document.getElementById("todo-input-display");
 
 const todos = [
 	{
@@ -41,8 +43,19 @@ const buildTodoList = function () {
 
 const handleAddTodo = function (e) {
 	console.log("handleAddTodo", e);
+	todo = {
+		todoTitle: newTodoEl.value,
+		completedStatus: false,
+	};
+	todos.push(todo);
+};
+
+const handleNewTodoTextInput = function (e) {
+	console.log(e.target.value);
+	inputDisplayEl.textContent = e.target.value;
 };
 
 addTodoEl.addEventListener("click", handleAddTodo);
+newTodoEl.addEventListener("input", handleNewTodoTextInput);
 
 buildTodoList();
